@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 
 import datetime
+import os
 
 def do_magic():
   now = datetime.datetime.now()
   return "Hello! {0}".format(now)
 
-if __name__ == "__name__":
-  print(do_magic())
+def application(env, start_response):
+  start_response('200 OK', [('Content-Type','text/html')])
+  return [do_magix()]
 
-print(datetime.datetime.now())
+if __name__ == "__name__":
+  if 'REQUEST_URI' in os.evviron:
+    print("Contect-type: text/html\n\n")
+  print(do_magic())
+  print(datetime.datetime.now())
